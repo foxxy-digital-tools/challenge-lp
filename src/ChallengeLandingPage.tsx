@@ -568,6 +568,7 @@ const SituationsSection = () => {
     {
       pill: 'SITUATION A // REACH PLATEAU',
       badgeColor: 'bg-[#FFF7ED] text-[#EA580C] border-[#FDBA74]',
+      diagnosis: 'DIAGNOSIS: Publishing without outlier pattern contrast',
       graphic: <FlatlineOscilloscope />,
       headline: 'I keep posting consistently, but stay stuck at 200–500 views.',
       body: "You try new topics, hooks, and posting times, but effort isn't turning into progress because you lack a structured way to isolate which variables actually trigger distribution signals.",
@@ -575,6 +576,7 @@ const SituationsSection = () => {
     {
       pill: 'SITUATION B // THE ONE-HIT MYSTERY',
       badgeColor: 'bg-[#FEF3C7] text-[#D97706] border-[#FCD34D]',
+      diagnosis: 'DIAGNOSIS: Accidental hit without a repeatable script formula',
       graphic: <OnceSpikeSVG />,
       headline: 'One Reel exploded once, but I cannot repeat what made it work.',
       body: 'You experienced a sudden spike in views and followers on a past post, yet every Reel after it dropped back to baseline. You had an accidental hit, but no framework to reverse-engineer and re-test the pattern.',
@@ -582,6 +584,7 @@ const SituationsSection = () => {
     {
       pill: 'SITUATION C // ATTENTION WITHOUT CONVERSION',
       badgeColor: 'bg-[#EEF2FF] text-[#4F46E5] border-[#C7D2FE]',
+      diagnosis: 'DIAGNOSIS: High vanity views leaking through passive bios',
       graphic: <FunnelLeakSVG />,
       headline: 'I have views and followers, but zero paying clients or inquiries.',
       body: "You've built attention, but lack the profile positioning, trust architecture, and intentional calls-to-action that systematically convert casual reel viewers into qualified direct conversations.",
@@ -621,8 +624,14 @@ const SituationsSection = () => {
                 </span>
               </div>
 
-              <div className="border border-[#E5E4DE] rounded-xl bg-[#FAF9F6] overflow-hidden p-3 mb-6 shadow-xs">
+              <div className="border border-[#E5E4DE] rounded-xl bg-[#FAF9F6] overflow-hidden p-3 mb-5 shadow-xs">
                 {sit.graphic}
+              </div>
+
+              <div className="mb-2">
+                <span className="font-mono text-[9px] font-bold text-[#EA580C] uppercase tracking-wider block">
+                  {sit.diagnosis}
+                </span>
               </div>
 
               <h3 className="text-[17px] font-bold tracking-tight text-[#09090B] leading-[1.3] mb-3">
@@ -660,6 +669,7 @@ const phases = [
     },
     days: 'DAYS 01–03',
     milestones: 'MILESTONES M1–M2',
+    assetType: 'SPREADSHEET TEMPLATE',
     icon: Compass,
     title: 'Direction & Personal Baseline Audit',
     mission: 'Establish your objective starting point. Audit your past 90 days of Reels, isolate your own top outperformers, and define your non-negotiable target audience persona.',
@@ -684,6 +694,7 @@ const phases = [
     },
     days: 'DAYS 04–08',
     milestones: 'MILESTONES M3–M6',
+    assetType: 'AI PROMPT PACK & VAULT',
     icon: Search,
     title: '10-Account Outlier Investigation & AI Pattern Decoding',
     mission: 'Identify ~10 comparable niche accounts, isolate 10–15 true statistical outlier Reels (5x–15x their baseline), assemble verbatim transcripts, and extract testable pattern formulas using our supplied AI prompt frameworks.',
@@ -708,6 +719,7 @@ const phases = [
     },
     days: 'DAYS 09–15',
     milestones: 'MILESTONES M7–M9a',
+    assetType: 'PRODUCTION CHECKLIST & LOG',
     icon: Send,
     title: 'Original Hypothesis Creation & Test Cycle 01',
     mission: 'Translate decoded patterns into 3–4 original hypotheses in your authentic voice (never copying scripts). Script, film, publish Test Batch 1, and log real 48–72hr Instagram distribution telemetry.',
@@ -732,6 +744,7 @@ const phases = [
     },
     days: 'DAYS 16–21',
     milestones: 'MILESTONES M9b–M11',
+    assetType: 'PROFILE FUNNEL BLUEPRINT',
     icon: Store,
     title: 'Opportunity Storefront, Cycle 02 Iteration & Weekly SOP',
     mission: 'Optimize your profile bio, pinned post trust architecture, and next-step CTA. Compare Cycle 1 data against your baseline, iterate a refined Cycle 2 test, and lock in your repeatable weekly content engine.',
@@ -857,6 +870,9 @@ const CurriculumSection = () => {
                   </div>
 
                   <div className="shrink-0 flex items-center gap-2">
+                    <span className="font-mono text-[9px] font-bold px-2.5 py-1 rounded-lg bg-[#F4F3EE] border border-[#E5E4DE] text-[#09090B] shadow-2xs hidden sm:inline-block">
+                      {phase.assetType}
+                    </span>
                     <span className={cn('font-mono text-[10px] font-bold px-3 py-1 rounded-full border', phase.colorTheme.tagBg, phase.colorTheme.border)}>
                       45 MINS/DAY
                     </span>
@@ -1045,6 +1061,7 @@ const testimonials = [
     role: "Founder & Director",
     company: "GrowthBridge (Gurugram)",
     headline: "From 300 Views to 42,000 Outlier on Day 12",
+    metricBeforeAfter: "320 MEDIAN → 42,000 OUTLIER",
     quote: "Before this challenge, I posted daily for three months and never crossed 400 views. Coach Ravikant's 10-account investigation isolated the contrast hook formula in our niche. My test Reel reached 42,000 views and closed 2 high-ticket clients.",
     result: "42K Outlier Views",
     tag: "Consulting Founder"
@@ -1054,6 +1071,7 @@ const testimonials = [
     role: "Head of Marketing",
     company: "CloudScale (Bengaluru)",
     headline: "Beat Our 90-Day Account Baseline by 4.8x",
+    metricBeforeAfter: "920 BASELINE → 4,410 AVG VIEWS",
     quote: "The AI Pattern Decoding Matrix cut out 80% of script guesswork. Testing hypotheses in two 72-hour distribution batches gave our team concrete proof of what works. Highest ROI cohort we have taken.",
     result: "4.8x Baseline Growth",
     tag: "Growth Lead"
@@ -1063,6 +1081,7 @@ const testimonials = [
     role: "Agency Founder",
     company: "Nair Digital (Mumbai)",
     headline: "4 Qualified Inbound DMs in the First 72 Hours",
+    metricBeforeAfter: "0 INBOUND/MO → 4 QUALIFIED DMS IN 72H",
     quote: "Most Instagram advice is about generic dancing or viral audio. Coach Ravikant's Opportunity Storefront framework re-architected my bio and pinned posts. Inbound inquiries turned into real discovery calls without paid ads.",
     result: "4 Client Inquiries",
     tag: "Agency Founder"
@@ -1072,6 +1091,7 @@ const testimonials = [
     role: "Executive Coach",
     company: "Leadership Impact (Delhi NCR)",
     headline: "The 45-Min Daily Routine Stopped My Burnout",
+    metricBeforeAfter: "22% RETENTION → 68% RETENTION RATE",
     quote: "I was spending 3 hours daily recording random reels with zero traction. Following the 45-minute daily mission gave me absolute structure. My average retention jumped from 22% to 68%.",
     result: "68% Retention Rate",
     tag: "Executive Coach"
@@ -1081,6 +1101,7 @@ const testimonials = [
     role: "Strategy Consultant",
     company: "Apex Advisory (Pune)",
     headline: "Landed a ₹85,000 Retainer from Reel #07",
+    metricBeforeAfter: "0 BOOKINGS → ₹85,000 RETAINER",
     quote: "The contrast hook framework from Phase 02 positioned me as a distinct authority. A prospect who watched my second test cycle booked a call directly from my profile link and signed an ₹85k retainer.",
     result: "₹85k Retainer",
     tag: "Strategy Consultant"
@@ -1090,6 +1111,7 @@ const testimonials = [
     role: "Creative Director",
     company: "Zenith Studio (Hyderabad)",
     headline: "10-Account Outlier Vault Is Pure Gold",
+    metricBeforeAfter: "RANDOM POSTING → 3 VALIDATED OUTLIERS",
     quote: "Having the exact spreadsheet to track outlier ratios completely changed how I look at competitors. It is not copying — it is reverse-engineering proven distribution mechanics.",
     result: "3 Viral Outliers",
     tag: "Creative Director"
@@ -1229,9 +1251,12 @@ const CoachSection = ({ onOpenCheckout }: { onOpenCheckout: () => void }) => {
                 className="p-6 rounded-2xl bg-[#FAF9F6] border border-[#E5E4DE] relative"
               >
                 <Quote size={32} className="text-[#E5E4DE] absolute top-4 right-4 pointer-events-none" />
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
                     {current.result}
+                  </span>
+                  <span className="font-mono text-[9.5px] font-bold px-2 py-0.5 rounded bg-[#FFF7ED] text-[#EA580C] border border-[#FDBA74]">
+                    {current.metricBeforeAfter}
                   </span>
                   <span className="font-mono text-[10px] text-[#71717A]">
                     {current.tag}
@@ -1466,6 +1491,14 @@ const faqs = [
   {
     q: "Does this guarantee viral Reels or specific revenue figures?",
     a: "No — and anyone making algorithmic guarantees is lying to you. We provide a repeatable, evidence-based decision framework: how to identify outlier patterns, formulate testable hypotheses, and read signal distribution. Your results depend on your execution, niche consistency, and creative iteration.",
+  },
+  {
+    q: "Can I complete this while managing a busy full-time job or business?",
+    a: "Yes. Every daily mission is specifically engineered for 45 minutes of practical output. You won't be trapped watching long theoretical lectures. You receive one clear action prompt at 8:00 AM, execute it on your account, and submit your checkpoint before midnight. It easily fits into a lunch break or evening session.",
+  },
+  {
+    q: "How does Coach Ravikant review my account during the cohort?",
+    a: "Throughout the 21 days, there are 4 structured milestone checkpoints where Coach Ravikant reviews your 10-Account Outlier Vault, original hypothesis scripts, and 72-hour distribution logs directly inside the WhatsApp cohort, providing direct feedback before you publish each test batch.",
   },
 ];
 
@@ -1717,12 +1750,22 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="btn-tactile w-full py-3.5 text-[14px] font-bold flex items-center justify-center gap-2 group shadow-card"
+                  className="btn-tactile w-full py-3.5 text-[14px] font-bold flex items-center justify-center gap-2 group shadow-card cursor-pointer"
                 >
                   <span>Confirm & Join Cohort 01 — {CHALLENGE_CONFIG.priceINR}</span>
                   <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform text-[#D4F636]" />
                 </button>
-                <p className="text-center font-mono text-[9px] text-[#A1A1AA] mt-2">
+                <div className="flex items-center justify-center gap-2 pt-2.5 font-mono text-[9.5px] text-[#71717A]">
+                  <span className="flex items-center gap-1 font-semibold text-[#065F46]">
+                    <ShieldCheck size={12} className="text-[#059669]" />
+                    <span>256-Bit SSL Encrypted</span>
+                  </span>
+                  <span>•</span>
+                  <span>Zero Spam</span>
+                  <span>•</span>
+                  <span>Instant Onboarding</span>
+                </div>
+                <p className="text-center font-mono text-[9px] text-[#A1A1AA] mt-1.5">
                   Instant WhatsApp invitation link sent upon verification • {CHALLENGE_CONFIG.gstLabel}
                 </p>
               </div>
@@ -1796,7 +1839,7 @@ export default function ChallengeLandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] selection:bg-[#D4F636] selection:text-[#09090B]">
+    <div className="min-h-screen bg-[#FAF9F6] selection:bg-[#D4F636] selection:text-[#09090B] pb-20 lg:pb-0">
       {/* Sticky Navigation with Active Underlines & ScrollSpy */}
       <Navbar onOpenCheckout={() => setModalOpen(true)} />
 
@@ -1843,6 +1886,34 @@ export default function ChallengeLandingPage() {
 
       {/* Global Footer */}
       <Footer />
+
+      {/* Mobile Sticky Quick-Action Conversion Bar (Instagram-to-Mobile Best Practice) */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-30 px-4 py-3 bg-white/95 backdrop-blur-md border-t border-[#E5E4DE] shadow-xl">
+        <div className="max-w-md mx-auto flex items-center justify-between gap-3">
+          <div className="flex flex-col leading-tight min-w-0">
+            <div className="flex items-center gap-1.5 font-mono text-[10px]">
+              <span className="font-bold text-[#EA580C]">COHORT 01</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#059669] animate-pulse" />
+              <span className="text-[#52525B] font-medium truncate">{CHALLENGE_CONFIG.seatsLeft} spots remaining</span>
+            </div>
+            <div className="flex items-baseline gap-1.5 mt-0.5">
+              <span className="font-black text-base text-[#09090B] font-mono leading-none">{CHALLENGE_CONFIG.priceINR}</span>
+              <span className="text-[11px] text-[#A1A1AA] line-through font-mono leading-none">{CHALLENGE_CONFIG.originalPriceINR}</span>
+              <span className="font-mono text-[9px] font-bold text-[#065F46] bg-[#ECFDF5] border border-[#A7F3D0] px-1.5 py-0.2 rounded">
+                80% OFF
+              </span>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setModalOpen(true)}
+            className="btn-tactile px-5 py-2.5 text-xs font-black flex items-center gap-1.5 shadow-md shrink-0 cursor-pointer active:scale-95 transition-transform"
+          >
+            <span>Claim Pass</span>
+            <ArrowRight size={13} className="text-[#D4F636]" />
+          </button>
+        </div>
+      </div>
 
       {/* Viewport-Centered Registration Modal */}
       <CheckoutModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
