@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-canvas: #FAF9F6;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F4F3EE;
+    --bg-muted: #EFEFE9;
+    --ink-primary: #09090B;
+    --ink-secondary: #52525B;
+    --ink-muted: #71717A;
+    --border-hairline: #E5E4DE;
+    --border-subtle: #ECEBE5;
+    --accent-primary: #09090B;
+    --accent-signal: #EA580C;
+    --accent-emerald: #059669;
+    --accent-volt: #D4F636;
+    --accent-indigo: #4F46E5;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--ink-primary);
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F8FAFC;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: 'Instrument Serif', Georgia, serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .tracking-tightest {
+    letter-spacing: -0.035em;
+  }
+
+  /* Subtle architectural dot pattern */
+  .bg-dot-pattern {
+    background-size: 24px 24px;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  }
+
+  .hatch-pattern {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      #E5E4DE 0,
+      #E5E4DE 1px,
+      transparent 0,
+      transparent 8px
+    );
+  }
+
+  .card-surface {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .card-elevated {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  }
+
+  .shadow-card {
+    box-shadow: 0 1px 3px rgba(9,9,11,0.04), 0 10px 28px -4px rgba(9,9,11,0.05), inset 0 1px 0 0 rgba(255,255,255,0.9);
+  }
+
+  .shadow-card-hover {
+    box-shadow: 0 2px 6px rgba(9,9,11,0.06), 0 20px 48px -6px rgba(9,9,11,0.09), inset 0 1px 0 0 rgba(255,255,255,0.95);
+  }
+
+  .shadow-ticket {
+    box-shadow: 0 2px 4px rgba(9,9,11,0.04), 0 24px 56px -12px rgba(9,9,11,0.1), inset 0 1px 0 0 rgba(255,255,255,1);
+  }
+
+  .shadow-modal {
+    box-shadow: 0 24px 60px -12px rgba(9,9,11,0.22), 0 0 0 1px rgba(9,9,11,0.08);
+  }
+
+  .btn-tactile {
+    background-color: #09090B;
+    color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(9,9,11,0.3), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.3);
+    transition: all 0.16s ease;
+  }
+
+  .btn-tactile:hover {
+    background-color: #18181B;
+    box-shadow: 0 3px 8px rgba(9,9,11,0.25), inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-tactile:active {
+    transform: translateY(0px);
+    box-shadow: 0 1px 2px rgba(9,9,11,0.2), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  .btn-volt {
+    background-color: #D4F636;
+    color: #09090B;
+    font-weight: 700;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(180, 220, 20, 0.4), inset 0 1px 0 rgba(255,255,255,0.6);
+    transition: all 0.16s ease;
+  }
+
+  .btn-volt:hover {
+    background-color: #C5E929;
+    box-shadow: 0 4px 14px rgba(180, 220, 20, 0.5), inset 0 1px 0 rgba(255,255,255,0.8);
+    transform: translateY(-1px);
+  }
+}
