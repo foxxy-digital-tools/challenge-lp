@@ -9,8 +9,97 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- High-Performance Interaction-Driven Tracking (Meta Pixel & 1st-Party Parameter Builder) -->
+    <script>
+      (function() {
+        // Immediate 1st-Party Meta Parameter Builder (0ms latency)
+        try {
+          var getCookieVal = function(name) {
+            var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+            return match ? decodeURIComponent(match[3]) : null;
+          };
+          var setCookieVal = function(name, value, days) {
+            var expires = new Date(Date.now() + (days || 90) * 864e5).toUTCString();
+            document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+          };
+
+          // 1. _fbp (Browser ID)
+          var fbp = getCookieVal('_fbp') || localStorage.getItem('_fbp');
+          if (!fbp) {
+            fbp = 'fb.1.' + Date.now() + '.' + Math.floor(Math.random() * 8999999999 + 1000000000);
+          }
+          setCookieVal('_fbp', fbp, 90);
+          localStorage.setItem('_fbp', fbp);
+
+          // 2. _fbc (Click ID from fbclid)
+          var urlParams = new URLSearchParams(window.location.search);
+          var fbclid = urlParams.get('fbclid');
+          if (fbclid) {
+            var fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+            setCookieVal('_fbc', fbc, 90);
+            localStorage.setItem('_fbc', fbc);
+          }
+
+          // 3. _ext_id (External Persistent ID)
+          var extId = getCookieVal('_ext_id') || localStorage.getItem('_ext_id');
+          if (!extId) {
+            extId = 'ext_' + Date.now() + '_' + Math.random().toString(36).substring(2, 12);
+          }
+          setCookieVal('_ext_id', extId, 90);
+          localStorage.setItem('_ext_id', extId);
+        } catch (e) {}
+
+        var analyticsFired = false;
+        var initAnalytics = function() {
+          if (analyticsFired) return;
+          analyticsFired = true;
+
+          // Remove interaction listeners
+          ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(evt) {
+            window.removeEventListener(evt, initAnalytics, { passive: true });
+          });
+
+          // Meta Pixel Code with Advanced Matching
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+
+          var matchData = {};
+          try {
+            var em = localStorage.getItem('_user_email');
+            var ph = localStorage.getItem('_user_phone');
+            var eid = localStorage.getItem('_ext_id');
+            if (em) matchData.em = em;
+            if (ph) matchData.ph = ph;
+            if (eid) matchData.external_id = eid;
+          } catch(e) {}
+
+          var pixelId = '1001150546287128';
+          fbq('init', pixelId, matchData);
+          fbq('track', 'PageView');
+        };
+
+        // Attach listeners for first human interaction
+        ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(evt) {
+          window.addEventListener(evt, initAnalytics, { passive: true, once: true });
+        });
+
+        // Fallback timer after initial rendering window (3s)
+        setTimeout(initAnalytics, 3000);
+      })();
+    </script>
   </head>
   <body>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+           src="https://www.facebook.com/tr?id=1001150546287128&ev=PageView&noscript=1" />
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

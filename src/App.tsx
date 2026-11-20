@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 import { MobileBottomBar } from './components/MobileBottomBar';
 import { CheckoutModal } from './components/CheckoutModal';
 import { SectionDivider, Crosshair } from './components/common/GridDivider';
+import './lib/metaPixel';
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);

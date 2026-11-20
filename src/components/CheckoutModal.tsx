@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, TrendingUp, Target, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { CHALLENGE_CONFIG } from '../config';
 import { cn } from '../lib/utils';
+import { trackMetaEvent, cacheUserData, generateEventId, getExternalId } from '../lib/metaPixel';
 
 export type GoalType = 'audience' | 'clients' | '';
 
@@ -26,8 +27,56 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
   });
   const [submitted, setSubmitted] = useState(false);
 
+  // 📊 Fire InitiateCheckout on modal open (Browser Pixel)
+  useEffect(() => {
+    if (isOpen) {
+      const icEventId = generateEventId('ic');
+      trackMetaEvent(
+        'InitiateCheckout',
+        {
+          content_name: '21-Day Instagram Pattern & Growth Challenge — Cohort 01',
+          content_type: 'product',
+          value: 999,
+          currency: 'INR',
+        },
+        {},
+        icEventId,
+        { skipServerCapi: true }
+      );
+    }
+  }, [isOpen]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const extId = getExternalId();
+    cacheUserData({
+      name: form.name,
+      phone: form.whatsapp,
+      external_id: extId,
+    });
+
+    // 📊 Fire Lead (Browser Pixel + Server CAPI) with Deduplication
+    const leadEventId = generateEventId('lead');
+    trackMetaEvent(
+      'Lead',
+      {
+        content_name: '21-Day Instagram Pattern & Growth Challenge — Cohort 01',
+        content_category: 'Challenge Cohort',
+        content_type: 'product',
+        value: 999,
+        currency: 'INR',
+        goal: form.goal,
+        instagram: form.instagram,
+      },
+      {
+        name: form.name,
+        phone: form.whatsapp,
+        external_id: extId,
+      },
+      leadEventId
+    );
+
     setSubmitted(true);
   };
 
