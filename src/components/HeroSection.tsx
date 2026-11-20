@@ -53,7 +53,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onEnroll, onPhases }) 
               <div className="w-full sm:w-auto inline-flex items-center justify-center min-h-[48px] gap-2 px-4 py-2.5 sm:py-3 rounded-xl bg-[#F4F3EE] border border-[#E5E4DE] text-xs font-mono">
                 <span className="text-[#A1A1AA] line-through">{CHALLENGE_CONFIG.originalPriceINR}</span>
                 <span className="text-base font-black text-[#09090B]">{CHALLENGE_CONFIG.priceINR}</span>
-                <span className="text-[10px] font-bold text-[#065F46] bg-[#ECFDF5] border border-[#A7F3D0] px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-bold text-[#065F46] bg-[#ECFDF5] border border-[#A7F3D0] px-2 py-0.5 rounded-full whitespace-nowrap shrink-0">
                   Save {CHALLENGE_CONFIG.savingsPercent}
                 </span>
               </div>
