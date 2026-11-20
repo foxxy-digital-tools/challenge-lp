@@ -49,21 +49,21 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
       {/* Centered Modal Card */}
       <div className="relative w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl border border-[#E5E4DE] shadow-modal overflow-hidden my-auto z-10">
         {/* Modal Header */}
-        <div className="p-5 sm:p-6 border-b border-[#E5E4DE] bg-[#FAF9F6] flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="p-4 sm:p-6 border-b border-[#E5E4DE] bg-[#FAF9F6] flex items-center justify-between">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <div className="w-10 h-10 rounded-lg bg-[#D4F636] text-[#09090B] flex items-center justify-center font-black text-sm shrink-0 shadow-xs">
               CR
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-[9px] font-bold text-[#EA580C] uppercase tracking-wider">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="font-mono text-[8.5px] sm:text-[9px] font-bold text-[#EA580C] uppercase tracking-wider">
                   {CHALLENGE_CONFIG.cohortLabel}
                 </span>
-                <span className="font-mono text-[9px] px-1.5 py-0.2 rounded bg-[#D4F636] text-[#09090B] font-bold">
+                <span className="font-mono text-[8.5px] sm:text-[9px] px-1.5 py-0.2 rounded bg-[#D4F636] text-[#09090B] font-bold">
                   {CHALLENGE_CONFIG.priceINR}
                 </span>
               </div>
-              <h3 className="font-extrabold text-[16px] text-[#09090B] tracking-tight">
+              <h3 className="font-extrabold text-[15px] sm:text-[16px] text-[#09090B] tracking-tight">
                 Reserve Your Challenge Seat
               </h3>
             </div>
@@ -71,19 +71,19 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
 
           <button
             onClick={handleClose}
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-[#71717A] hover:text-[#09090B] hover:bg-white border border-transparent hover:border-[#E5E4DE] transition-all cursor-pointer"
+            className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg flex items-center justify-center text-[#71717A] hover:text-[#09090B] hover:bg-white border border-transparent hover:border-[#E5E4DE] transition-all cursor-pointer"
             aria-label="Close modal"
           >
-            <X size={16} />
+            <X size={18} />
           </button>
         </div>
 
         {/* Modal Body */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
               <div>
-                <label className="block font-mono text-[10px] text-[#52525B] font-bold tracking-[0.05em] uppercase mb-1.5">
+                <label className="block font-mono text-[9.5px] sm:text-[10px] text-[#52525B] font-bold tracking-[0.05em] uppercase mb-1 sm:mb-1.5">
                   Your Full Name
                 </label>
                 <input
@@ -92,16 +92,16 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   placeholder="e.g. Alex Morgan"
                   value={form.name}
                   onChange={e => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 text-[14px] text-[#09090B] border border-[#E5E4DE] rounded-xl bg-white outline-none focus:border-[#09090B] focus:ring-2 focus:ring-[#09090B]/10 transition-all placeholder:text-[#A1A1AA]"
+                  className="w-full px-3.5 py-2.5 sm:py-2.5 min-h-[44px] text-[16px] sm:text-[14px] text-[#09090B] border border-[#E5E4DE] rounded-xl bg-white outline-none focus:border-[#09090B] focus:ring-2 focus:ring-[#09090B]/10 transition-all placeholder:text-[#A1A1AA]"
                 />
               </div>
 
               <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="font-mono text-[10px] text-[#52525B] font-bold tracking-[0.05em] uppercase">
-                    WhatsApp Number (For Cohort Access)
+                <div className="flex items-center justify-between mb-1 sm:mb-1.5">
+                  <label className="font-mono text-[9.5px] sm:text-[10px] text-[#52525B] font-bold tracking-[0.05em] uppercase">
+                    WhatsApp Number
                   </label>
-                  <span className="font-mono text-[9px] text-[#059669] font-semibold">DAILY MISSIONS SENT HERE</span>
+                  <span className="font-mono text-[8.5px] sm:text-[9px] text-[#059669] font-semibold">DAILY MISSIONS SENT HERE</span>
                 </div>
                 <input
                   required
@@ -109,12 +109,12 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   placeholder="+91 98765 43210"
                   value={form.whatsapp}
                   onChange={e => setForm({ ...form, whatsapp: e.target.value })}
-                  className="w-full px-3.5 py-2.5 text-[14px] text-[#09090B] border border-[#E5E4DE] rounded-xl bg-white outline-none focus:border-[#09090B] focus:ring-2 focus:ring-[#09090B]/10 transition-all placeholder:text-[#A1A1AA]"
+                  className="w-full px-3.5 py-2.5 min-h-[44px] text-[16px] sm:text-[14px] text-[#09090B] border border-[#E5E4DE] rounded-xl bg-white outline-none focus:border-[#09090B] focus:ring-2 focus:ring-[#09090B]/10 transition-all placeholder:text-[#A1A1AA]"
                 />
               </div>
 
               <div>
-                <label className="block font-mono text-[10px] text-[#52525B] font-bold tracking-[0.05em] uppercase mb-1.5">
+                <label className="block font-mono text-[9.5px] sm:text-[10px] text-[#52525B] font-bold tracking-[0.05em] uppercase mb-1 sm:mb-1.5">
                   Instagram Handle (For Account Audit)
                 </label>
                 <div className="relative">
@@ -125,13 +125,13 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                     placeholder="yourhandle"
                     value={form.instagram}
                     onChange={e => setForm({ ...form, instagram: e.target.value })}
-                    className="w-full pl-8 pr-3.5 py-2.5 text-[14px] text-[#09090B] border border-[#E5E4DE] rounded-xl bg-white outline-none focus:border-[#09090B] focus:ring-2 focus:ring-[#09090B]/10 transition-all placeholder:text-[#A1A1AA]"
+                    className="w-full pl-8 pr-3.5 py-2.5 min-h-[44px] text-[16px] sm:text-[14px] text-[#09090B] border border-[#E5E4DE] rounded-xl bg-white outline-none focus:border-[#09090B] focus:ring-2 focus:ring-[#09090B]/10 transition-all placeholder:text-[#A1A1AA]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-mono text-[10px] text-[#52525B] font-bold tracking-[0.05em] uppercase mb-1.5">
+                <label className="block font-mono text-[9.5px] sm:text-[10px] text-[#52525B] font-bold tracking-[0.05em] uppercase mb-1 sm:mb-1.5">
                   Select Your Primary Objective
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -139,17 +139,17 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                     type="button"
                     onClick={() => setForm({ ...form, goal: 'audience' })}
                     className={cn(
-                      'p-3 rounded-xl border text-left transition-all cursor-pointer',
+                      'p-2.5 sm:p-3 min-h-[48px] rounded-xl border text-left transition-all cursor-pointer',
                       form.goal === 'audience'
                         ? 'border-[#09090B] bg-[#09090B] text-white shadow-xs'
                         : 'border-[#E5E4DE] bg-[#FAF9F6] text-[#52525B] hover:border-[#09090B]/30'
                     )}
                   >
-                    <div className="font-bold text-[12px] flex items-center gap-1.5">
+                    <div className="font-bold text-[11.5px] sm:text-[12px] flex items-center gap-1.5">
                       <TrendingUp size={13} className={form.goal === 'audience' ? 'text-[#D4F636]' : 'text-[#71717A]'} />
                       Audience Growth
                     </div>
-                    <div className="text-[10px] opacity-80 mt-0.5 leading-tight">
+                    <div className="text-[9.5px] sm:text-[10px] opacity-80 mt-0.5 leading-tight">
                       Reach, followers & views
                     </div>
                   </button>
@@ -158,32 +158,32 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                     type="button"
                     onClick={() => setForm({ ...form, goal: 'clients' })}
                     className={cn(
-                      'p-3 rounded-xl border text-left transition-all cursor-pointer',
+                      'p-2.5 sm:p-3 min-h-[48px] rounded-xl border text-left transition-all cursor-pointer',
                       form.goal === 'clients'
                         ? 'border-[#09090B] bg-[#09090B] text-white shadow-xs'
                         : 'border-[#E5E4DE] bg-[#FAF9F6] text-[#52525B] hover:border-[#09090B]/30'
                     )}
                   >
-                    <div className="font-bold text-[12px] flex items-center gap-1.5">
+                    <div className="font-bold text-[11.5px] sm:text-[12px] flex items-center gap-1.5">
                       <Target size={13} className={form.goal === 'clients' ? 'text-[#D4F636]' : 'text-[#71717A]'} />
                       Client Inquiries
                     </div>
-                    <div className="text-[10px] opacity-80 mt-0.5 leading-tight">
+                    <div className="text-[9.5px] sm:text-[10px] opacity-80 mt-0.5 leading-tight">
                       DMs, leads & clients
                     </div>
                   </button>
                 </div>
               </div>
 
-              <div className="pt-2">
+              <div className="pt-1.5 sm:pt-2">
                 <button
                   type="submit"
-                  className="btn-tactile w-full py-3.5 text-[14px] font-bold flex items-center justify-center gap-2 group shadow-card cursor-pointer"
+                  className="btn-tactile w-full min-h-[48px] py-3.5 text-[14px] font-bold flex items-center justify-center gap-2 group shadow-card cursor-pointer"
                 >
                   <span>Confirm & Join Cohort 01 — {CHALLENGE_CONFIG.priceINR}</span>
                   <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform text-[#D4F636]" />
                 </button>
-                <div className="flex items-center justify-center gap-2 pt-2.5 font-mono text-[9.5px] text-[#71717A]">
+                <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pt-2.5 font-mono text-[9px] sm:text-[9.5px] text-[#71717A]">
                   <span className="flex items-center gap-1 font-semibold text-[#065F46]">
                     <ShieldCheck size={12} className="text-[#059669]" />
                     <span>256-Bit SSL Encrypted</span>
@@ -193,7 +193,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   <span>•</span>
                   <span>Instant Onboarding</span>
                 </div>
-                <p className="text-center font-mono text-[9px] text-[#A1A1AA] mt-1.5">
+                <p className="text-center font-mono text-[8.5px] sm:text-[9px] text-[#A1A1AA] mt-1.5">
                   Instant WhatsApp invitation link sent upon verification • {CHALLENGE_CONFIG.gstLabel}
                 </p>
               </div>
@@ -221,3 +221,4 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
 };
 
 export default CheckoutModal;
+

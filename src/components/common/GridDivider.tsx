@@ -15,13 +15,14 @@ export const Crosshair: React.FC<{ className?: string }> = ({ className = '' }) 
 );
 
 export const SectionDivider: React.FC<{ hatch?: boolean }> = ({ hatch = false }) => (
-  <div className="relative w-full">
-    <Crosshair className="-top-[5px] -left-[5.5px]" />
-    <Crosshair className="-top-[5px] -right-[5.5px]" />
+  <div className="relative w-full overflow-hidden md:overflow-visible">
+    <Crosshair className="-top-[5px] -left-[5.5px] hidden md:block" />
+    <Crosshair className="-top-[5px] -right-[5.5px] hidden md:block" />
     {hatch ? (
-      <div className="w-full h-6 hatch-pattern border-y border-[#E5E4DE]" />
+      <div className="w-full h-5 sm:h-6 hatch-pattern border-y border-[#E5E4DE]" />
     ) : (
       <div className="w-full h-px bg-[#E5E4DE]" />
     )}
   </div>
 );
+

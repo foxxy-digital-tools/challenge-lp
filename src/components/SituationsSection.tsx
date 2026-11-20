@@ -88,8 +88,8 @@ const situations = [
 export const SituationsSection: React.FC = () => {
   return (
     <section id="diagnostics" className="relative py-12 sm:py-16">
-      <div className="px-6 sm:px-10 lg:px-12 mb-10">
-        <div className="flex items-center gap-2 mb-3">
+      <div className="px-4 sm:px-10 lg:px-12 mb-8 sm:mb-10">
+        <div className="flex items-center gap-2 mb-2.5 sm:mb-3">
           <span className="font-mono text-[10px] text-[#A1A1AA] tracking-[0.08em] uppercase font-semibold">
             [DIAGNOSTIC // 01]
           </span>
@@ -98,7 +98,7 @@ export const SituationsSection: React.FC = () => {
             ROOT CAUSE ANALYSIS
           </span>
         </div>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#09090B] leading-[1.15] max-w-[800px]">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#09090B] leading-[1.18] max-w-[800px]">
           Three common frustrations. One underlying cause:{' '}
           <span className="font-serif italic font-normal text-[#EA580C]">
             publishing without a structured feedback loop.
@@ -110,16 +110,16 @@ export const SituationsSection: React.FC = () => {
         {situations.map((sit, i) => (
           <div
             key={i}
-            className="p-6 sm:p-8 flex flex-col justify-between hover:bg-[#FAF9F6] transition-colors"
+            className="p-5 sm:p-8 flex flex-col justify-between hover:bg-[#FAF9F6] transition-colors"
           >
             <div>
-              <div className="mb-4">
-                <span className={cn('font-mono text-[9px] font-bold px-2.5 py-1 rounded-full border tracking-[0.05em]', sit.badgeColor)}>
+              <div className="mb-3.5 sm:mb-4">
+                <span className={cn('font-mono text-[9px] font-bold px-2.5 py-1 rounded-full border tracking-[0.05em] inline-block', sit.badgeColor)}>
                   {sit.pill}
                 </span>
               </div>
 
-              <div className="border border-[#E5E4DE] rounded-xl bg-[#FAF9F6] overflow-hidden p-3 mb-5 shadow-xs">
+              <div className="border border-[#E5E4DE] rounded-xl bg-[#FAF9F6] overflow-hidden p-3 mb-4 sm:mb-5 shadow-xs">
                 {sit.graphic}
               </div>
 
@@ -129,7 +129,7 @@ export const SituationsSection: React.FC = () => {
                 </span>
               </div>
 
-              <h3 className="text-[17px] font-bold tracking-tight text-[#09090B] leading-[1.3] mb-3">
+              <h3 className="text-base sm:text-[17px] font-bold tracking-tight text-[#09090B] leading-[1.3] mb-2 sm:mb-3">
                 {sit.headline}
               </h3>
 
@@ -138,7 +138,7 @@ export const SituationsSection: React.FC = () => {
               </p>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-[#F4F3EE] flex items-center justify-between font-mono text-[10px] text-[#A1A1AA]">
+            <div className="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-[#F4F3EE] flex items-center justify-between font-mono text-[10px] text-[#A1A1AA]">
               <span>RESOLVED IN</span>
               <span className="font-bold text-[#09090B]">
                 {i === 0 ? 'PHASE 01 & 02' : i === 1 ? 'PHASE 02 & 03' : 'PHASE 04'}
@@ -150,3 +150,4 @@ export const SituationsSection: React.FC = () => {
     </section>
   );
 };
+

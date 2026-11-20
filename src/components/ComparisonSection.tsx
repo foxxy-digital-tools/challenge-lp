@@ -5,8 +5,8 @@ import { OLD_WAY_POINTS, NEW_WAY_POINTS } from '../config';
 export const ComparisonSection: React.FC = () => {
   return (
     <section id="comparison" className="relative py-12 sm:py-16">
-      <div className="px-6 sm:px-10 lg:px-12 mb-10">
-        <div className="flex items-center gap-2 mb-3">
+      <div className="px-4 sm:px-10 lg:px-12 mb-8 sm:mb-10">
+        <div className="flex items-center gap-2 mb-2.5 sm:mb-3">
           <span className="font-mono text-[10px] text-[#A1A1AA] tracking-[0.08em] uppercase font-semibold">
             [COMPARISON LEDGER // 03]
           </span>
@@ -15,7 +15,7 @@ export const ComparisonSection: React.FC = () => {
             THE ARCHITECTURAL DIFFERENCE
           </span>
         </div>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#09090B] leading-[1.15]">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#09090B] leading-[1.18]">
           Why structured daily implementation beats{' '}
           <span className="font-serif italic font-normal text-[#EA580C]">
             passive video courses.
@@ -24,8 +24,8 @@ export const ComparisonSection: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#E5E4DE] border-y border-[#E5E4DE]">
-        <div className="p-8 sm:p-10 bg-[#F4F3EE]">
-          <div className="flex items-center justify-between mb-6">
+        <div className="p-5 sm:p-8 md:p-10 bg-[#F4F3EE]">
+          <div className="flex items-center justify-between mb-5 sm:mb-6">
             <span className="font-mono text-[10px] font-bold text-[#71717A] tracking-[0.07em] uppercase">
               THE OLD WAY // PASSIVE VIDEO BINGEING
             </span>
@@ -34,7 +34,7 @@ export const ComparisonSection: React.FC = () => {
             </span>
           </div>
 
-          <ul className="space-y-4">
+          <ul className="space-y-3.5 sm:space-y-4">
             {OLD_WAY_POINTS.map((item, i) => (
               <li key={i} className="flex items-start gap-3">
                 <div className="mt-0.5 w-5 h-5 rounded-full bg-[#E5E4DE] flex items-center justify-center shrink-0">
@@ -48,8 +48,8 @@ export const ComparisonSection: React.FC = () => {
           </ul>
         </div>
 
-        <div className="p-8 sm:p-10 bg-white">
-          <div className="flex items-center justify-between mb-6">
+        <div className="p-5 sm:p-8 md:p-10 bg-white">
+          <div className="flex items-center justify-between mb-5 sm:mb-6">
             <span className="font-mono text-[10px] font-bold text-[#059669] tracking-[0.07em] uppercase">
               THIS COHORT // EVIDENCE-BASED IMPLEMENTATION
             </span>
@@ -58,7 +58,7 @@ export const ComparisonSection: React.FC = () => {
             </span>
           </div>
 
-          <ul className="space-y-4">
+          <ul className="space-y-3.5 sm:space-y-4">
             {NEW_WAY_POINTS.map((item, i) => (
               <li key={i} className="flex items-start gap-3">
                 <div className="mt-0.5 w-5 h-5 rounded-full bg-[#ECFDF5] border border-[#A7F3D0] flex items-center justify-center shrink-0">
@@ -77,3 +77,4 @@ export const ComparisonSection: React.FC = () => {
 };
 
 export default ComparisonSection;
+

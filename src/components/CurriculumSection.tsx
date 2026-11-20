@@ -10,9 +10,9 @@ export const CurriculumSection: React.FC = () => {
   const [lens, setLens] = useState<0 | 1>(0);
 
   return (
-    <section id="curriculum" className="relative py-12 sm:py-20 bg-[#FAF9F6]">
-      <div className="px-6 sm:px-10 lg:px-12 mb-10">
-        <div className="flex items-center gap-2 mb-3">
+    <section id="curriculum" className="relative py-12 sm:py-16 md:py-20 bg-[#FAF9F6]">
+      <div className="px-4 sm:px-10 lg:px-12 mb-8 sm:mb-10">
+        <div className="flex items-center gap-2 mb-2.5 sm:mb-3">
           <span className="font-mono text-[10px] text-[#A1A1AA] tracking-[0.08em] uppercase font-semibold">
             [CURRICULUM ARCHITECTURE // 02]
           </span>
@@ -22,49 +22,49 @@ export const CurriculumSection: React.FC = () => {
           </span>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-[#E5E4DE]">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 sm:gap-6 pb-6 border-b border-[#E5E4DE]">
           <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#09090B] leading-[1.15]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#09090B] leading-[1.2]">
               {CHALLENGE_CONFIG.durationDays} Days. 11 Milestones.{' '}
-              <span className="font-serif italic font-normal text-[#EA580C]">
+              <span className="font-serif italic font-normal text-[#EA580C] inline-block sm:inline">
                 Two Real Publishing Loops.
               </span>
             </h2>
-            <p className="mt-2 text-[14px] text-[#52525B] max-w-[620px]">
+            <p className="mt-2 text-[13px] sm:text-[14px] text-[#52525B] max-w-[620px] leading-relaxed">
               Every participant follows the exact same structured daily missions on WhatsApp. Toggle the Goal Lens below to see how the framework adapts seamlessly whether you want audience reach or paying clients.
             </p>
           </div>
 
           {/* Goal Lens Interactive Switcher */}
-          <div className="shrink-0 flex flex-col items-start lg:items-end gap-2">
+          <div className="w-full sm:w-auto shrink-0 flex flex-col items-start lg:items-end gap-2">
             <span className="font-mono text-[10px] text-[#71717A] uppercase font-semibold tracking-wider">
               SELECT YOUR GOAL LENS:
             </span>
-            <div className="p-1 rounded-xl bg-[#F4F3EE] border border-[#E5E4DE] shadow-xs flex items-center relative">
+            <div className="w-full sm:w-auto p-1 rounded-xl bg-[#F4F3EE] border border-[#E5E4DE] shadow-xs grid grid-cols-2 sm:flex items-center gap-1 relative">
               <button
                 onClick={() => setLens(0)}
                 className={cn(
-                  'relative z-10 px-4 py-2 rounded-lg text-[12px] font-bold transition-all duration-200 flex items-center gap-1.5 cursor-pointer',
+                  'relative z-10 w-full sm:w-auto min-h-[44px] px-3 sm:px-4 py-2 rounded-lg text-[11px] sm:text-[12px] font-bold transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer text-center',
                   lens === 0 
                     ? 'bg-white text-[#09090B] shadow-xs border border-[#E5E4DE]' 
                     : 'text-[#71717A] hover:text-[#09090B]'
                 )}
               >
                 <TrendingUp size={14} className={lens === 0 ? 'text-[#059669]' : 'text-[#A1A1AA]'} />
-                <span>Creator / Audience Growth</span>
+                <span>Creator / Audience</span>
               </button>
 
               <button
                 onClick={() => setLens(1)}
                 className={cn(
-                  'relative z-10 px-4 py-2 rounded-lg text-[12px] font-bold transition-all duration-200 flex items-center gap-1.5 cursor-pointer',
+                  'relative z-10 w-full sm:w-auto min-h-[44px] px-3 sm:px-4 py-2 rounded-lg text-[11px] sm:text-[12px] font-bold transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer text-center',
                   lens === 1 
                     ? 'bg-white text-[#09090B] shadow-xs border border-[#E5E4DE]' 
                     : 'text-[#71717A] hover:text-[#09090B]'
                 )}
               >
                 <Target size={14} className={lens === 1 ? 'text-[#EA580C]' : 'text-[#A1A1AA]'} />
-                <span>Founder / Client Inquiries</span>
+                <span>Founder / Inquiries</span>
               </button>
             </div>
           </div>
@@ -72,7 +72,7 @@ export const CurriculumSection: React.FC = () => {
       </div>
 
       {/* 4 Rich Visual Phase Cards */}
-      <div className="px-6 sm:px-10 lg:px-12 grid grid-cols-1 gap-6">
+      <div className="px-4 sm:px-10 lg:px-12 grid grid-cols-1 gap-5 sm:gap-6">
         {PHASES_DATA.map((phase) => {
           const Icon = phase.icon;
           const currentLensData = lens === 0 ? phase.lensA : phase.lensB;
@@ -82,32 +82,33 @@ export const CurriculumSection: React.FC = () => {
               key={phase.num}
               className="rounded-2xl border border-[#E5E4DE] bg-white overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-200"
             >
-              <div className="p-6 sm:p-7 border-b border-[#F4F3EE] bg-gradient-to-r from-white via-white to-[#FAF9F6]">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
-                  <div className="flex items-center gap-3">
+              <div className="p-4 sm:p-7 border-b border-[#F4F3EE] bg-gradient-to-r from-white via-white to-[#FAF9F6]">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-3">
+                  <div className="flex items-center gap-3 min-w-0">
                     <div 
-                      className="w-12 h-12 rounded-xl flex flex-col items-center justify-center font-mono text-[11px] font-extrabold shadow-xs border shrink-0"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex flex-col items-center justify-center font-mono text-[10px] sm:text-[11px] font-extrabold shadow-xs border shrink-0"
                       style={{ 
                         backgroundColor: phase.colorTheme.accent, 
                         borderColor: phase.colorTheme.accent,
                         color: '#FFFFFF' 
                       }}
                     >
-                      <Icon size={15} />
+                      <Icon size={14} className="sm:hidden" />
+                      <Icon size={15} className="hidden sm:block" />
                       <span className="leading-none mt-0.5">{phase.num}</span>
                     </div>
 
-                    <div>
-                      <div className="flex items-center gap-2 mb-0.5">
-                        <span className="font-mono text-[10px] font-bold tracking-[0.06em] uppercase text-[#71717A]">
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 sm:gap-2 mb-0.5">
+                        <span className="font-mono text-[9.5px] sm:text-[10px] font-bold tracking-[0.06em] uppercase text-[#71717A]">
                           {phase.days}
                         </span>
                         <span className="text-[#D4D4D0]">•</span>
-                        <span className="font-mono text-[10px] font-bold tracking-[0.06em] text-[#09090B]">
+                        <span className="font-mono text-[9.5px] sm:text-[10px] font-bold tracking-[0.06em] text-[#09090B]">
                           {phase.milestones}
                         </span>
                       </div>
-                      <h3 className="text-[19px] sm:text-[21px] font-extrabold tracking-tight text-[#09090B]">
+                      <h3 className="text-[17px] sm:text-[21px] font-extrabold tracking-tight text-[#09090B] leading-snug">
                         Phase {phase.num}: {phase.title}
                       </h3>
                     </div>
@@ -117,39 +118,45 @@ export const CurriculumSection: React.FC = () => {
                     <span className="font-mono text-[9px] font-bold px-2.5 py-1 rounded-lg bg-[#F4F3EE] border border-[#E5E4DE] text-[#09090B] shadow-2xs hidden sm:inline-block">
                       {phase.assetType}
                     </span>
-                    <span className={cn('font-mono text-[10px] font-bold px-3 py-1 rounded-full border', phase.colorTheme.tagBg, phase.colorTheme.border)}>
+                    <span className={cn('font-mono text-[9.5px] sm:text-[10px] font-bold px-2.5 sm:px-3 py-1 rounded-full border', phase.colorTheme.tagBg, phase.colorTheme.border)}>
                       45 MINS/DAY
                     </span>
                   </div>
                 </div>
 
-                <p className="text-[14px] text-[#52525B] leading-[1.65] max-w-[850px]">
+                <p className="text-[13px] sm:text-[14px] text-[#52525B] leading-[1.65] max-w-[850px]">
                   {phase.mission}
                 </p>
               </div>
 
-              <div className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 bg-white">
-                <div>
+              <div className="p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 bg-white items-stretch">
+                <div className="flex flex-col h-full">
                   <span className="font-mono text-[10px] text-[#71717A] uppercase font-bold tracking-wider block mb-2">
                     WHAT YOU SUBMIT IN THE WHATSAPP COHORT:
                   </span>
-                  <div className="p-4 rounded-xl bg-[#F4F3EE] border border-[#E5E4DE] flex items-start gap-3 h-[calc(100%-24px)]">
-                    <div className="w-6 h-6 rounded-lg bg-[#09090B] text-white flex items-center justify-center shrink-0 mt-0.5">
-                      <Check size={14} className="text-[#D4F636]" />
+                  <div className="p-3.5 sm:p-4 rounded-xl bg-[#F4F3EE] border border-[#E5E4DE] flex flex-col justify-between flex-1">
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-lg bg-[#09090B] text-white flex items-center justify-center shrink-0 mt-0.5">
+                        <Check size={14} className="text-[#D4F636]" />
+                      </div>
+                      <div>
+                        <div className="font-mono text-[11px] font-bold text-[#09090B]">
+                          {phase.deliverable}
+                        </div>
+                        <div className="text-[12px] text-[#52525B] mt-1 leading-relaxed">
+                          Reviewed by Coach Ravikant with structured peer verification checkpoints.
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="font-mono text-[11px] font-bold text-[#09090B]">
-                        {phase.deliverable}
-                      </div>
-                      <div className="text-[12px] text-[#52525B] mt-1 leading-relaxed">
-                        Reviewed by Coach Ravikant with structured peer verification checkpoints.
-                      </div>
+                    <div className="text-[10.5px] sm:text-[11px] font-mono font-semibold pt-2 border-t border-[#E5E4DE] mt-3 text-[#71717A] flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#059669] shrink-0" />
+                      <span>WhatsApp Milestone Review Checkpoint</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Dynamic Goal Lens Box */}
-                <div>
+                <div className="flex flex-col h-full">
                   <span className="font-mono text-[10px] text-[#71717A] uppercase font-bold tracking-wider block mb-2">
                     ADAPTED FOR YOUR GOAL:
                   </span>
@@ -161,7 +168,7 @@ export const CurriculumSection: React.FC = () => {
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.2 }}
                       className={cn(
-                        'p-4 rounded-xl border flex flex-col justify-between h-[calc(100%-24px)]',
+                        'p-3.5 sm:p-4 rounded-xl border flex flex-col justify-between flex-1',
                         lens === 0 
                           ? 'bg-[#F0FDF4] border-[#A7F3D0]' 
                           : 'bg-[#FFF7ED] border-[#FDBA74]'
@@ -184,7 +191,7 @@ export const CurriculumSection: React.FC = () => {
                         </p>
                       </div>
                       <div className={cn(
-                        'text-[11px] font-mono font-semibold pt-2 border-t mt-auto',
+                        'text-[10.5px] sm:text-[11px] font-mono font-semibold pt-2 border-t mt-3',
                         lens === 0 ? 'border-[#A7F3D0]/60 text-[#047857]' : 'border-[#FDBA74]/60 text-[#C2410C]'
                       )}>
                         {currentLensData.metric}
@@ -200,3 +207,4 @@ export const CurriculumSection: React.FC = () => {
     </section>
   );
 };
+

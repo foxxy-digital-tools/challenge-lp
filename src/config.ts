@@ -241,3 +241,4 @@ export const FAQS_DATA = [
     a: "Throughout the 21 days, there are 4 structured milestone checkpoints where Coach Ravikant reviews your 10-Account Outlier Vault, original hypothesis scripts, and 72-hour distribution logs directly inside the WhatsApp cohort, providing direct feedback before you publish each test batch.",
   },
 ];
+
