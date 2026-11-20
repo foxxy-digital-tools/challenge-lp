@@ -39,7 +39,7 @@ export default function App() {
       <Navbar onOpenCheckout={() => setModalOpen(true)} />
 
       {/* Main Exposed Architectural Container with rails */}
-      <main className="max-w-[1160px] mx-auto relative border-l border-r border-[#E5E4DE] bg-white shadow-xs">
+      <main className="w-full max-w-full md:max-w-[1160px] mx-auto relative border-x-0 md:border-l md:border-r border-[#E5E4DE] bg-white shadow-xs overflow-x-clip md:overflow-visible">
         {/* Section 02: Split Hero with Physical VIP Pass Artifact */}
         <HeroSection onEnroll={() => setModalOpen(true)} onPhases={scrollToPhases} />
 
@@ -73,7 +73,7 @@ export default function App() {
         {/* Section 08: Zero-Fluff FAQ */}
         <FAQSection />
 
-        <div className="relative h-0">
+        <div className="relative h-0 hidden md:block">
           <Crosshair className="-bottom-[5.5px] -left-[5.5px]" />
           <Crosshair className="-bottom-[5.5px] -right-[5.5px]" />
         </div>

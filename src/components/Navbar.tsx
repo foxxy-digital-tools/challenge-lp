@@ -12,12 +12,19 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
-  const [activeSection, setActiveSection] = useState('diagnostics');
+  const [activeSection, setActiveSection] = useState<string>('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 140;
+      const scrollPosition = window.scrollY + 160;
+
+      // When near top of page, no nav section is active (user is in Hero)
+      const firstSection = document.getElementById(NAV_ITEMS[0]?.id || 'diagnostics');
+      if (firstSection && scrollPosition < firstSection.offsetTop) {
+        setActiveSection('');
+        return;
+      }
 
       for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
         const item = NAV_ITEMS[i];
@@ -30,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
           }
         }
       }
-      setActiveSection('diagnostics');
+      setActiveSection('');
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -53,38 +60,38 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
   return (
     <header className="sticky top-0 z-40 w-full shadow-sm bg-white/95 backdrop-blur-md">
       {/* 1. Urgency Top Ticker */}
-      <div className="bg-[#09090B] px-3 sm:px-4 py-2 text-xs text-white font-medium border-b border-[#27272A]">
-        <div className="max-w-[1160px] mx-auto flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap min-w-0">
+      <div className="bg-[#09090B] px-3 sm:px-4 py-1.5 sm:py-2 text-xs text-white font-medium border-b border-[#27272A]">
+        <div className="max-w-[1160px] mx-auto flex items-center justify-between gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden text-ellipsis whitespace-nowrap min-w-0">
             <span className="flex h-2 w-2 relative shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EA580C] opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#EA580C]" />
             </span>
-            <span className="font-bold text-[#D4F636] flex items-center gap-1 shrink-0 font-mono text-[11px]">
-              <Zap size={13} className="fill-current text-[#D4F636]" />
-              OFFER ALERT:
+            <span className="font-bold text-[#D4F636] flex items-center gap-1 shrink-0 font-mono text-[10px] sm:text-[11px]">
+              <Zap size={11} className="fill-current text-[#D4F636]" />
+              OFFER:
             </span>
             <span className="hidden md:inline text-[#D4D4D8] text-[11px]">
               21-Day Challenge • 45 Mins/Day —
             </span>
-            <span className="font-bold text-white text-[11px] truncate">
-              Only {CHALLENGE_CONFIG.seatsLeft} of {CHALLENGE_CONFIG.totalSeats} Spots Remaining!
+            <span className="font-bold text-white text-[10px] sm:text-[11px] truncate">
+              {CHALLENGE_CONFIG.seatsLeft} of {CHALLENGE_CONFIG.totalSeats} Spots Left!
             </span>
           </div>
 
           <button
             onClick={onOpenCheckout}
-            className="shrink-0 text-[11px] font-bold text-[#09090B] bg-[#D4F636] hover:bg-[#C5E929] px-3.5 py-1 rounded-full transition-all flex items-center gap-1 shadow-sm whitespace-nowrap cursor-pointer"
+            className="shrink-0 text-[10px] sm:text-[11px] font-bold text-[#09090B] bg-[#D4F636] hover:bg-[#C5E929] px-2.5 sm:px-3.5 py-1 rounded-full transition-all flex items-center gap-1 shadow-sm whitespace-nowrap cursor-pointer min-h-[30px]"
           >
             <span>Claim Seat — {CHALLENGE_CONFIG.priceINR}</span>
-            <ArrowRight size={12} className="shrink-0" />
+            <ArrowRight size={11} className="shrink-0" />
           </button>
         </div>
       </div>
 
       {/* 2. Main Navigation Bar with Active Underlines */}
-      <nav className="border-b border-[#E5E4DE] px-4 sm:px-6 lg:px-8 py-2.5">
-        <div className="max-w-[1160px] mx-auto flex items-center justify-between gap-4">
+      <nav className="border-b border-[#E5E4DE] px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5">
+        <div className="max-w-[1160px] mx-auto flex items-center justify-between gap-2 sm:gap-4">
           {/* Left: Brand (Coach Ravikant Academy) */}
           <div className="flex items-center gap-2 shrink-0">
             <CRAcademyBrandBadge />
@@ -120,7 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
           </div>
 
           {/* Right: Live Scarcity & CTA */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F3EE] border border-[#E5E4DE] font-mono text-[10px] text-[#52525B]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#059669] animate-pulse" />
               <span>{CHALLENGE_CONFIG.seatsLeft} Spots Left</span>
@@ -128,17 +135,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
 
             <button
               onClick={onOpenCheckout}
-              className="btn-tactile px-4 py-2 text-[13px] font-bold flex items-center gap-1.5 group shrink-0 cursor-pointer"
+              className="hidden sm:inline-flex btn-tactile px-4 py-2 text-[13px] font-bold items-center gap-1.5 group shrink-0 cursor-pointer"
             >
               <span>Reserve Seat</span>
               <span className="hidden xs:inline text-[#D4F636]">— {CHALLENGE_CONFIG.priceINR}</span>
               <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
             </button>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Toggle - 44px touch target */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-[#52525B] hover:text-[#09090B] hover:bg-[#F4F3EE] cursor-pointer"
+              className="lg:hidden w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-[#52525B] hover:text-[#09090B] hover:bg-[#F4F3EE] cursor-pointer transition-colors"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -158,12 +165,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
             >
               <div className="flex flex-col space-y-1">
                 {NAV_ITEMS.map((item) => (
-                  <a
+                  <button
                     key={item.id}
-                    href={`#${item.id}`}
+                    type="button"
                     onClick={(e) => handleNavClick(e, item.id)}
                     className={cn(
-                      'px-3 py-2 rounded-lg text-[13px] font-semibold transition-colors flex items-center justify-between',
+                      'w-full min-h-[44px] px-3.5 py-2.5 rounded-xl text-[14px] font-semibold transition-colors flex items-center justify-between text-left cursor-pointer',
                       activeSection === item.id 
                         ? 'bg-[#F4F3EE] text-[#09090B] font-bold' 
                         : 'text-[#52525B] hover:bg-[#FAF9F6]'
@@ -171,10 +178,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
                   >
                     <span>{item.label}</span>
                     {activeSection === item.id && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
+                      <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
                     )}
-                  </a>
+                  </button>
                 ))}
+                <div className="pt-2 px-1">
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenCheckout();
+                    }}
+                    className="w-full min-h-[44px] btn-tactile py-2.5 px-4 text-[13px] font-bold flex items-center justify-center gap-1.5 cursor-pointer rounded-xl"
+                  >
+                    <span>Reserve Seat — {CHALLENGE_CONFIG.priceINR}</span>
+                    <ArrowRight size={13} className="text-[#D4F636]" />
+                  </button>
+                </div>
               </div>
             </motion.div>
           )}
@@ -183,3 +202,4 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout }) => {
     </header>
   );
 };
+

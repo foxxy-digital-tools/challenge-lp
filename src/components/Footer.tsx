@@ -4,19 +4,21 @@ import { CHALLENGE_CONFIG } from '../config';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="border-t border-[#E5E4DE] bg-white py-12 px-6 sm:px-10 lg:px-12">
-      <div className="max-w-[1160px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+    <footer className="border-t border-[#E5E4DE] bg-white py-10 sm:py-12 px-4 sm:px-10 lg:px-12">
+      <div className="max-w-[1160px] mx-auto flex flex-col md:flex-row items-center sm:items-start md:items-center text-center sm:text-left justify-between gap-5 sm:gap-6">
         <div className="flex items-center gap-3">
           <CRAcademyBrandBadge />
         </div>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 font-mono text-[10px] text-[#71717A]">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 font-mono text-[9.5px] sm:text-[10px] text-[#71717A]">
           <span>DURATION: {CHALLENGE_CONFIG.durationDays} DAYS</span>
+          <span className="hidden sm:inline">•</span>
           <span>FORMAT: WHATSAPP IMPLEMENTATION</span>
-          <span>OUTPUT: 2 PUBLISHED TEST CYCLES</span>
+          <span className="hidden sm:inline">•</span>
+          <span>OUTPUT: 2 TEST CYCLES</span>
         </div>
 
-        <div className="font-mono text-[10px] text-[#A1A1AA]">
+        <div className="font-mono text-[9.5px] sm:text-[10px] text-[#A1A1AA]">
           © 2026 Coach Ravikant Academy. All rights reserved.
         </div>
       </div>
@@ -25,3 +27,4 @@ export const Footer: React.FC = () => {
 };
 
 export default Footer;
+
